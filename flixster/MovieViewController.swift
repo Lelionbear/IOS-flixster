@@ -59,7 +59,7 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell") as! MovieCell
-//        let cell = UITableViewCell()
+
         
         let movie = movies[indexPath.row]
         let title = movie["title"] as! String
@@ -67,7 +67,12 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         cell.titleLabel.text = title
         cell.synopsisLabel.text = synopsis
-//        cell.textLabel!.text = title
+        
+        
+        let baseURL = "https://image.tmdb.org/t/p/w185"
+        let posterPath = movie["poster_path"] as! String
+        let posterURL = URL(string: baseURL + posterPath)
+
         
         return cell
     }
